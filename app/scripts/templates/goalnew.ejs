@@ -1,0 +1,178 @@
+<a href="#" class="add-goal btn btn-primary">ADD GOAL</a>
+<div class="form">
+  <h3>Enter A New Goal</h3>
+
+  <div class="form-group">
+    <label for="category">Goal Category</label><br />
+    <select class="form-control" name="category" value="<%= category %>">
+      <option value="">Please select ...</option>
+      <option value="follow-up">Follow Up</option>
+      <!--
+      <option value="follow-up-test">Follow Up</option>
+      <option value="aerobic-exercise">Aerobic Exercise Goal</option>
+      <option value="weight-loss">Weight Loss Goal</option>
+      <option value="dietary-goal-1">Dietary Goal #1</option>
+      <option value="dietary-goal-2">Dietary Goal #2</option>
+      <option value="tobacco-use">Tobacco Use</option>
+      <option value="monitoring">Monitoring</option>
+      <option value="stress-management">Stress Management</option>
+      -->
+      <option value="other-short-term">Other Short-Term Goals</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description:</label><br />
+    <textarea class="form-control" name="description" default="Testing" />
+  </div>
+  <% if ('' != category) { %>
+    <% if ('follow-up' == category) { %>
+      <div class="form-group">
+        <h4>Follow Up</h4>
+      </div>
+    <% } %>
+    <% if ('follow-up-test' == category) { %>
+      <div class="form-group">
+        <h4>Follow Up</h4>
+
+        <p>I will follow up with my provider in:</p>
+        <select class="form-control" name="provider-in" value="">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+        <select class="form-control" name="provider-in-week-month" value="">
+          <option value="">Please select ...</option>
+          <option value="weeks">weeks</option>
+          <option value="months">months</option>
+        </select>
+
+        <p>With my PCH in:</p>
+        <select class="form-control" name="pch-in" value="">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+        <select class="form-control" name="pch-in-week-month" value="">
+          <option value="">Please select ...</option>
+          <option value="weeks">weeks</option>
+          <option value="months">months</option>
+        </select>
+
+
+      </div>
+    <% } %>
+
+    <% if ('aerobic-exercise' == category) { %>
+      <h4>Aerobic Exercise</h4>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('weight-loss' == category) { %>
+      <h4>Weigth Loss</h4>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('dietary-goal-1' == category) { %>
+      <h4></h4>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('dietary-goal-2' == category) { %>
+      <h4></h4>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('tobacco-use' == category) { %>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('monitoring' == category) { %>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('stress-management' == category) { %>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <% if ('other-short-term' == category) { %>
+      <h4>Other Short-Term Goals</h4>
+      <div class="form-group">
+        <p></p>
+        <select class="form-control" name="xxx" value="">
+          <option value="">Please select ...</option>
+          <option value="eat-at-same-time">I will eat at the same time every day</option>
+          <option value="3-meals-2-snacks-per-day">I will eat 3 meals and 2 snacks a day</option>
+          <option value="other">Other...</option>
+        </select>
+      </div>
+    <% } %>
+
+    <div class="form-group">
+      <label for="likelihood">Likelihood: 1 Not likely 10 Very Likely</label>
+      <select class="form-control" name="likelihood" value="<%= likelihood %>">
+        <option value="10">10</option>
+        <option value="9">9</option>
+        <option value="8">8</option>
+        <option value="7">7</option>
+        <option value="6">6</option>
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select>
+    </div>
+
+  <div class="form-group issue-photo-new">
+    <input class="btn btn-primary" type="submit" value="SAVE" />
+  </div>
+  <% } %>
+</div>
