@@ -15,7 +15,8 @@ define([
           goalId: '',
           receivedMessage: '',
           created: '',
-          updated: ''
+          updated: '',
+          messageStatus: ''
         },
         url: function () {
           if (this.isNew()) {
@@ -26,6 +27,7 @@ define([
         },
 
         responseStatus: function () {
+          if ('' != this.get('messageStatus')) return this.get('messageStatus');
           var receivedMessage = this.get('receivedMessage');
           var messageStatus = 'pending';
           if (receivedMessage == '') return messageStatus;
