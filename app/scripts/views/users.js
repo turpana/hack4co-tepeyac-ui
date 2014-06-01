@@ -19,14 +19,16 @@ define([
           this.users.fetch();
         },
         template: JST['app/scripts/templates/users.ejs'],
+        render: function () {
+          this.$el.html(this.template());
+          this.users.each(this.appendModel, this);
+          return this;
+        },
         events: {
           'click .add-client': 'addClient'
         },
         addClient: function () {
           this.trigger('navigate', 'client/new', {trigger:true});
-        },
-        navigate: function (path, options) {
-          this.trigger('navigate', path, options); 
         },
         appendModel: function (model, collection, options) {
           var view = new UserPreviewRowView({model:model});

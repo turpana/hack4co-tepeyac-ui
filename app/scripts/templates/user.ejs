@@ -1,15 +1,19 @@
-<div class="user-detail col-sm-12">
-<% if (firstName || lastName) { %>
-  <h2>Client:
-    <% if (firstName) { %>
-      <%= firstName %> 
-    <% } %>
-    <% if (lastName) { %>
-      <%= lastName %> 
-    <% } %>
+<h2>
+  <% if (firstName || lastName) { %>
+    Cliente: 
+      <% if (firstName) { %>
+        <%= firstName %> 
+      <% } %>
+      <% if (lastName) { %>
+        <%= lastName %> 
+      <% } %>
+  <% } else { %>
+    ID de Cliente: <%= id %>
   <% } %>
-  </h2>
-</div>
+</h2>
+<% if (createdFormated) { %>
+  <p class="text-muted">Fecha de entrada: <%= createdFormated %></p>
+<% } %>
 <div class="goals col-sm-12">
-<h3>Goals</h3>
+<h3>Metas Para Tener Estilo de Vida Saludable</h3>
 </div>

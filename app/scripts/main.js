@@ -16,9 +16,13 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        fullcalendar: {
+            deps: ['jquery']
         }
     },
     paths: {
+        fullcalendar: '../bower_components/fullcalendar/fullcalendar',
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone/backbone',
         underscore: '../bower_components/underscore/underscore',
