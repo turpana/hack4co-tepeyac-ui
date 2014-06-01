@@ -19,74 +19,96 @@ define([
         currentView: null,
         client: null,
         initialize: function (options) {
-          this.mainView = new MainView({
-            el: $('#main')
-          });
+            this.mainView = new MainView({
+                el: $('#main')
+            });
         },
         transition: function (view) {
-          view.$el.hide();
-          if (null != this.currentView) {
-            var _this = this;
-            this.currentView.$el.fadeOut(
+            view.$el.hide();
+            if (null != this.currentView) {
+                var _this = this;
+                this.currentView.$el.fadeOut(
               this.animationSpeed,
               function () {
-                _this.currentView.remove();
-                _this.currentView = view;
-                _this.mainView.$el.append(view.el);
-                view.render();
-                view.$el.fadeIn(_this.animationSpeed);
+                  _this.currentView.remove();
+                  _this.currentView = view;
+                  _this.mainView.$el.append(view.el);
+                  view.render();
+                  view.$el.fadeIn(_this.animationSpeed);
               }
             );
-          } else {
-            this.currentView = view;
-            this.mainView.$el.append(view.el);
-            view.render().$el.fadeIn(this.animationSpeed);
-          }
+            } else {
+                this.currentView = view;
+                this.mainView.$el.append(view.el);
+                view.render().$el.fadeIn(this.animationSpeed);
+            }
         },
         routes: {
-          '': 'clientIndex',
-          'client': 'clientIndex',
-          'client/new': 'clientNew',
-          'client/:id': 'clientView'
+            '': 'clientIndex',
+            'client': 'clientIndex',
+            'client/new': 'clientNew',
+            'client/:id': 'clientView',
+            'client/:id/edit': 'clientEditView'
         },
         clientIndex: function () {
-          var view = new UsersView();
-          view.on('navigate', this.navigate, this);
-          this.transition(view);
+            var view = new UsersView();
+            view.on('navigate', this.navigate, this);
+            this.transition(view);
         },
         clientNew: function () {
-          this.client = new UserModel();
-          this.client.on('navigate', this.navigate, this);
-          this.transition(new UserNewView({
-            model: new UserModel()
-          }));
+            this.client = new UserModel();
+            this.client.on('navigate', this.navigate, this);
+            this.transition(new UserNewView({
+                model: new UserModel()
+            }));
         },
-        clientView: function(id) {
-          if (_.isNull(this.client)) {
+        clientView: function (id) {
+            if (_.isNull(this.client)) {
+                this.client = new UserModel({
+                    id: id
+                });
+                this.client.fetch({
+                    success: function (model, response, options) {
+                        options.router.transition(new UserView({
+                            model: model
+                        }));
+                    },
+                    error: function (model, response, options) {
+                        //console.log('error', model);
+                        if (Config.debug) {
+                            options.router.transition(new UserView({
+                                model: model
+                            }));
+                        }
+                    },
+                    router: this
+                });
+            } else {
+                this.transition(new UserView({
+                    model: this.client
+                }));
+            }
+        },
+        clientEditView: function (id) {
             this.client = new UserModel({
-              id: id
+                id: id
             });
             this.client.fetch({
-              success: function (model, response, options) {
-                options.router.transition( new UserView({
-                  model: model
-                }));
-              },
-              error: function (model, response, options) {
-                //console.log('error', model);
-                if (Config.debug) {
-                  options.router.transition( new UserView({
-                    model: model
-                  }));
-                }
-              },
-              router: this
+                success: function (model, response, options) {
+                    options.router.transition(new UserNewView({
+                        model: model
+                    }));
+                },
+                error: function (model, response, options) {
+                    //console.log('error', model);
+                    if (Config.debug) {
+                        options.router.transition(new UserNewView({
+                            model: model
+                        }));
+                    }
+                },
+                router: this
             });
-          } else {
-            this.transition(new UserView({
-              model: this.client
-            }));
-          }
         }
     });
 
