@@ -160,6 +160,7 @@
     <Compile Include="Controllers\GoalController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\SmsController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Filters\ModelValidationFilterAttribute.cs" />

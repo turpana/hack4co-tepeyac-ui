@@ -19,7 +19,7 @@ namespace Clinical.API.Repository
         {
             var currentEntity = this.GetById(entity.Id);
 
-            if(currentEntity == null)
+            if (currentEntity == null)
             {
                 this.Collection.Save(entity);
             }
@@ -34,9 +34,29 @@ namespace Clinical.API.Repository
             return entity;
         }
 
+        public T Delete(T entity)
+        {
+            var currentEntity = this.GetById(entity.Id);
+
+            if (currentEntity == null)
+            {
+                return null;
+            }
+
+            var query =
+                new QueryDocument
+                    {
+                        {"_id", new BsonObjectId(new ObjectId(currentEntity.Id))}
+                    };
+
+            this.Collection.Remove(query);
+
+            return currentEntity;
+        }
+
         public T GetById(string id)
         {
-            if(string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id))
             {
                 return default(T);
             }

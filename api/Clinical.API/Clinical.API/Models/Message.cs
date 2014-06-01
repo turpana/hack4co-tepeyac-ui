@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
 namespace Clinical.API.Models
 {
     public class Message : SmsMessage
     {
-        [Required]
+        //[Required]
         public string GoalId { get; set; }
 
         /// <summary>
@@ -13,7 +12,11 @@ namespace Clinical.API.Models
         /// This is a UNIX timestamp
         /// 
         /// </summary>
+        [BsonIgnoreIfNull]
         public string DateReceived { get; set; }
+
+        [BsonIgnoreIfNull]
+        public string ReceivedMessage { get; set; }
     }
 
     public class SmsMessage : Entity
@@ -23,6 +26,12 @@ namespace Clinical.API.Models
 
         [BsonIgnoreIfNull]
         public string SmsSid { get; set; }
+
+        [BsonIgnoreIfNull]
+        public string SmsStatus { get; set; }
+
+        [BsonIgnoreIfNull]
+        public string MessageStatus { get; set; }
 
         [BsonIgnoreIfNull]
         public string AccountSid { get; set; }
@@ -59,7 +68,7 @@ namespace Clinical.API.Models
 
         [BsonIgnoreIfNull]
         public string ToZip { get; set; }
-        
+
         [BsonIgnoreIfNull]
         public string ToCountry { get; set; }
     }
