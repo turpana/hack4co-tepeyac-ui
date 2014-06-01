@@ -15,7 +15,7 @@ define([
           this.goal = options.goal;
         },
         url: function () {
-          return Config.api.host + '/goal/' + this.goal.id + '/message/';
+          return Config.api.host + '/api/goal/' + this.goal.id + '/message/';
         }
     });
 
