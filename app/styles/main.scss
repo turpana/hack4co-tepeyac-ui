@@ -31,17 +31,14 @@ form {
     padding-right: 15px;
 }
 
-/* Custom page header */
+/* header */
 #header {
-    border-bottom: 1px solid #e5e5e5;
-}
-
-/* Make the masthead heading the same height as the navigation */
-#header h1 {
-    margin-top: 0;
-    margin-bottom: 0;
+  .page-title {
     line-height: 40px;
-    padding-bottom: 19px;
+    margin-top: 0;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 5px;
+  }
 }
 
 /* Custom page footer */
@@ -90,7 +87,7 @@ form {
     }
     /* Space out the masthead */
     #header {
-        margin-bottom: 30px;
+        margin-bottom: 0px;
     }
     /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
@@ -127,8 +124,17 @@ form {
   .goal-title {
     padding: 5px;
   }
-  .goal-status-green {
-    border: 1px solid #aca;
-    background: #dfe;
+  a {
+    color: #333333;
+  }
+  .goal-status-flag {
+    a .glyphicon {
+      color: #c55;
+    }
+  }
+  .goal-status-ok {
+    a .glyphicon {
+      color: #5c5;
+    }
   }
 }
