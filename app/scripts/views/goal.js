@@ -66,7 +66,6 @@ define([
           this.$el.html(this.template(this.model.attributes));
           this.calendarEvents = [];
           this.model.messages.each(this.addEvent, this);
-          console.log(this.calendarEvents);
           this.$el.find('.calendar').fullCalendar({
             events: this.calendarEvents,
             header: {

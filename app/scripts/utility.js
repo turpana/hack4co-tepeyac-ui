@@ -10,14 +10,12 @@ define({
     } else {
       // assuming unix timestampe
       var date = new Date(created * 1000);
-      console.log(date);
       var year = date.getFullYear();
       var month = new String(1 + date.getMonth());
       if (1 == month.length) month = "0" + month;
       var day = new String(date.getDate());
       if (1 == day.length) day = "0" + day;
       formatted = year+'-'+month+'-'+day;
-      console.log(formatted);
     }
     return formatted;
   }
