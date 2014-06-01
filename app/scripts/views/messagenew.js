@@ -52,7 +52,7 @@ define([
               );
             },
             error: function (model, response, options) {
-              console.log(model, response, options);
+              //console.log(model, response, options);
               if (Config.debug) {
                 model.trigger('navigate', 'client/1/goal/new', {trigger:true});
               }
