@@ -72,7 +72,10 @@ define([
             }));
         },
         clientView: function (id) {
-            if (_.isNull(this.client)) {
+            if (_.isNull(this.client) 
+                || this.client.isNew()
+                || (id != this.client.id)
+                ) {
                 this.client = new UserModel({
                     id: id
                 });
