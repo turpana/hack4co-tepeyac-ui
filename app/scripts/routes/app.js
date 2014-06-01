@@ -6,23 +6,29 @@ define([
     'config',
     'models/user',
     'models/goal',
+    'views/header',
     'views/main',
     'views/usernew',
     'views/user',
     'views/users',
     'views/goal'
-], function ($, Backbone, Config, UserModel, GoalModel, MainView, UserNewView,
+], function ($, Backbone, Config, UserModel, GoalModel, HeaderView, MainView, UserNewView,
   UserView, UsersView, GoalView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
         mainView: null,
         currentView: null,
+        headerView: null,
         client: null,
         initialize: function (options) {
-            this.mainView = new MainView({
-                el: $('#main')
-            });
+          this.headerView = new HeaderView({
+            el: $('#header')
+          });
+          this.mainView = new MainView({
+              el: $('#main')
+          });
+          this.headerView.render().$el.fadeIn(Config.speed);
         },
         transition: function (view) {
             view.$el.hide();
