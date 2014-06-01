@@ -1,4 +1,33 @@
 <h2><a class="navigate" href="/client/<%= clientId %>"><span class="glyphicon glyphicon-circle-arrow-left"></span></a> <%= clientName %></h2>
 <h3><%= description %></h3>
+
+<!-- Button trigger modal -->
+<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#send-reminder">
+  ENVIAR RECORDATORIO
+</button>
+
 <br /><br />
 <div class="goal-messages calendar"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="send-reminder" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Enviar Recordatorio</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="body">Mensaje:</label>
+              <input class="form-control" type="text" name="body" value="<%= textMessage %>" />
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+          <button type="button" class="btn btn-success">ENVIAR</button>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>
