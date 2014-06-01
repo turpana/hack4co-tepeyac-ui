@@ -23,7 +23,7 @@ define([
           'click .add-client': 'addClient'
         },
         addClient: function () {
-          this.trigger('navigate', 'client/add', {trigger:true});
+          this.trigger('navigate', 'client/new', {trigger:true});
         },
         navigate: function (path, options) {
           this.trigger('navigate', path, options); 

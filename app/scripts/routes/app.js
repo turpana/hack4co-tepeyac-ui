@@ -44,7 +44,7 @@ define([
           }
         },
         routes: {
-          '': 'clientNew',
+          '': 'clientIndex',
           'client': 'clientIndex',
           'client/new': 'clientNew',
           'client/:id': 'clientView'
@@ -58,7 +58,7 @@ define([
           this.client = new UserModel();
           this.client.on('navigate', this.navigate, this);
           this.transition(new UserNewView({
-            model: this.client
+            model: new UserModel()
           }));
         },
         clientView: function(id) {
