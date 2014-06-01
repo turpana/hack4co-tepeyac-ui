@@ -10,6 +10,12 @@ define([
 
     var BaseView = Backbone.View.extend({
         template: JST['app/scripts/templates/base.ejs'],
+
+        // helper so router can listen to views 'navigate' events
+        navigate: function (path, options) {
+          this.trigger('navigate', path, options); 
+        },
+
         render: function () {
           if (_.isUndefined(this.model)) {
             this.$el.html(this.template());

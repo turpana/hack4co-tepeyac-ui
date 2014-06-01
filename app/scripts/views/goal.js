@@ -10,7 +10,15 @@ define([
     'use strict';
 
     var GoalView = BaseView.extend({
-        template: JST['app/scripts/templates/goal.ejs']
+        initialize: function (options) {
+          this.model.messages.on('add', this.addMessage, this);
+          this.model.messages.fetch();
+        },
+        template: JST['app/scripts/templates/goal.ejs'],
+        addMessage: function (model, collection, options) {
+          console.log(model);
+        }
+
     });
 
     return GoalView;

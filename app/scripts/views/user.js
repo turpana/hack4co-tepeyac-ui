@@ -17,17 +17,11 @@ define([
         initialize: function (options) {
           this.model.goals.on('add', this.goalFetched, this);
           this.model.goals.fetch();
-
           this.goalNewView = new GoalNewView({
             model: new GoalModel({
               'accountId': this.model.id
             })
           });
-        },
-        events: {
-          'click .add-goal': 'addGoal'
-        },
-        addGoal: function () {
         },
         template: JST['app/scripts/templates/user.ejs'],
         render: function () {
@@ -37,6 +31,7 @@ define([
         },
         goalFetched: function (model, collection, options) {
           var view = new GoalPreviewView({model: model});
+          view.on('navigate', this.navigate, this);
           this.$el.find('.goals').append(view.render().el);
         }
     });

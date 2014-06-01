@@ -3,12 +3,20 @@
 define([
     'underscore',
     'backbone',
+    'config',
     'models/message'
-], function (_, Backbone, MessageModel) {
+], function (_, Backbone, Config, MessageModel) {
     'use strict';
 
     var MessageCollection = Backbone.Collection.extend({
-        model: MessageModel
+        goal: null,
+        model: MessageModel,
+        initialize: function (options) {
+          this.goal = options.goal;
+        },
+        url: function () {
+          return Config.api.host + '/goal/' + this.goal.id + '/message/';
+        }
     });
 
     return MessageCollection;

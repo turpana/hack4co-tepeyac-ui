@@ -9,9 +9,10 @@ define([
     'views/main',
     'views/usernew',
     'views/user',
-    'views/users'
+    'views/users',
+    'views/goal'
 ], function ($, Backbone, Config, UserModel, GoalModel, MainView, UserNewView,
-  UserView, UsersView) {
+  UserView, UsersView, GoalView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -48,7 +49,8 @@ define([
             'client': 'clientIndex',
             'client/new': 'clientNew',
             'client/:id': 'clientView',
-            'client/:id/edit': 'clientEditView'
+            'client/:id/edit': 'clientEditView',
+            'goal/:id': 'goalView'
         },
         clientIndex: function () {
             var view = new UsersView();
@@ -67,11 +69,12 @@ define([
                 this.client = new UserModel({
                     id: id
                 });
+                var _this = this;
                 this.client.fetch({
                     success: function (model, response, options) {
-                        options.router.transition(new UserView({
-                            model: model
-                        }));
+                        var view = new UserView({model: model});
+                        view.on('navigate', _this.navigate, _this);
+                        options.router.transition(view);
                     },
                     error: function (model, response, options) {
                         //console.log('error', model);
@@ -109,6 +112,16 @@ define([
                 },
                 router: this
             });
+        },
+        goalView: function (id) {
+          var goal = new GoalModel({id: id});
+          goal.fetch({
+            success: function (model, response, options) {
+              options.router.transition(new GoalView({model: model}));
+            },
+            error: function (model, response, options) {},
+            router: this
+          });
         }
     });
 

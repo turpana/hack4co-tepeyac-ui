@@ -15,6 +15,7 @@ define([
           'click .goal-detail': 'goalDetail'
         },
         goalDetail: function () {
+          this.trigger('navigate', 'goal/'+ this.model.id, {trigger: true});
           return false;
         },
         template: JST['app/scripts/templates/goalpreview.ejs'],

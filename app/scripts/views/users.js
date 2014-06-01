@@ -25,9 +25,6 @@ define([
         addClient: function () {
           this.trigger('navigate', 'client/new', {trigger:true});
         },
-        navigate: function (path, options) {
-          this.trigger('navigate', path, options); 
-        },
         appendModel: function (model, collection, options) {
           var view = new UserPreviewRowView({model:model});
           view.on('navigate', this.navigate, this);
