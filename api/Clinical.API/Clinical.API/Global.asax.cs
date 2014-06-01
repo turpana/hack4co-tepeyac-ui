@@ -36,7 +36,6 @@ namespace Clinical.API
             container.Register<IMongoDatabaseProvider, MongoDatabaseProvider>();
             container.Register<IRepository<Goal>, GoalRepository>();
             container.Register<IRepository<User>, UserRepository>();
-            container.Register<IRepository<Event>, EventsRepository>();
             container.Register<IRepository<Message>, MessageRepository>();
             container.Register<IMessageService, MessageService>();
         }

@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Clinical.API.Models;
@@ -12,7 +13,9 @@ namespace Clinical.API.Controllers
         private readonly IMessageService _messageService;
         private readonly IRepository<Message> _messages;
 
-        public MessageController(IMessageService messageService, IRepository<Message> messages)
+        public MessageController(
+            IMessageService messageService,
+            IRepository<Message> messages)
         {
             _messageService = messageService;
             _messages = messages;
@@ -20,16 +23,21 @@ namespace Clinical.API.Controllers
 
         public HttpResponseMessage Post(Message message)
         {
-            //string callBack = Url.Link("DefaultApi",
-            //    new
-            //        {
-            //            controller= "status",
-            //            goalId = message.GoalId ?? ""
-            //        });
+            string seed = Guid.NewGuid().ToString().Substring(0, 4).ToLower();
 
-            var smsSid = _messageService.SendMessage(message);
+            message.Seed = seed;
+            var oldBody = message.Body;
 
-            var response = Request.CreateResponse(HttpStatusCode.Created, smsSid);
+            message.Body = "You must you this code when replying: " + seed + "\n\n" + message.Body;
+
+            if (string.IsNullOrEmpty(message.MessageStatus))
+            {
+                _messageService.SendMessage(message);
+            }
+
+            var response = Request.CreateResponse(HttpStatusCode.Created);
+
+            message.Body = oldBody;
 
             _messages.Add(message);
 

@@ -29,24 +29,13 @@ namespace Clinical.API.Repository
             return base.Collection.Find(query).FirstOrDefault();
         }
 
-        public Message GetMostRecent(string fromPhoneNumber)
+        public Message GetMessageBySeed(string seed)
         {
-            var query =
-                Query.Or(
-                    new QueryDocument
-                        {
-                            { "from", fromPhoneNumber}
-                        },
-                    new QueryDocument
-                        {
-                            { "from", "+1" + fromPhoneNumber}
-                        });
+            var query = Query.EQ("seed", seed.ToLower());
 
-            var sortBy = SortBy.Descending("created");
+            var message = this.Collection.Find(query);
 
-            var mostRecent = this.Collection.Find(query).SetSortOrder(sortBy).FirstOrDefault();
-
-            return mostRecent;
+            return message.FirstOrDefault();
         }
 
         public IEnumerable<Message> GetMessageByGoalId(string goalId)
