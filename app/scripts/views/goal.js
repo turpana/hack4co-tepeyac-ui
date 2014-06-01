@@ -51,11 +51,13 @@ define([
           });
           message.save({}, {
             success: function (model, response, options) {
+              options.view.model.messages.add(model);
               $('#send-reminder').modal('toggle');
             },
             error: function (model, response, options) {
               $('#send-reminder').modal('toggle');
-            }
+            },
+            view: this
           });
           return false;
         },
@@ -73,10 +75,12 @@ define([
           message.save({}, {
             success: function (model, response, options) {
               $('#post-progress').modal('toggle');
+              options.view.model.messages.add(model);
             },
             error: function (model, response, options) {
               $('#post-progress').modal('toggle');
-            }
+            },
+            view: this
           });
           return false;
         },
