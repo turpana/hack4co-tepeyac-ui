@@ -37,7 +37,8 @@ define([
         },
         template: JST['app/scripts/templates/goal.ejs'],
         events: {
-          'click .send-message': 'sendMessage'
+          'click .send-message': 'sendMessage',
+          'click .post-progress': 'postProgress'
         },
         sendMessage: function () {
           var timestamp = Math.round(+new Date()/1000);
@@ -54,6 +55,27 @@ define([
             },
             error: function (model, response, options) {
               $('#send-reminder').modal('toggle');
+            }
+          });
+          return false;
+        },
+        postProgress: function () {
+          var timestamp = Math.round(+new Date()/1000);
+          var message = new MessageModel({
+            // include messageStatus to flag for not sending SMS
+            messageStatus: $('#message-status').val(),
+            to: this.client.get('phoneNumber'),
+            body: this.model.get('textMessage'),
+            goalId: this.model.id,
+            created: timestamp,
+            updated: timestamp
+          });
+          message.save({}, {
+            success: function (model, response, options) {
+              $('#post-progress').modal('toggle');
+            },
+            error: function (model, response, options) {
+              $('#post-progress').modal('toggle');
             }
           });
           return false;

@@ -86,10 +86,12 @@ define([
           }
           this.model.save({}, {
             success: function (model, response, options) {
-              console.log('success');
+              //console.log('success');
+              options.view.model.messages.add(model);
+
             },
             error: function (model, response, options) {
-              console.log('error');
+              //console.log('error');
             },
             view: this
 
