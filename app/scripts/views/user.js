@@ -23,6 +23,17 @@ define([
               'accountId': this.model.id
             })
           });
+          this.goalNewView.on('rerender', this.reRender, this);
+        },
+        reRender: function () {
+          this.model.goals.fetch();
+          this.render();
+          this.goalNewView = new GoalNewView({
+            model: new GoalModel({
+              'accountId': this.model.id
+            })
+          });
+          this.goalNewView.on('rerender', this.reRender, this);
         },
         template: JST['app/scripts/templates/user.ejs'],
         render: function () {

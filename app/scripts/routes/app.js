@@ -66,10 +66,11 @@ define([
         },
         clientNew: function () {
             this.client = new UserModel();
-            this.client.on('navigate', this.navigate, this);
-            this.transition(new UserNewView({
+            var view = new UserNewView({
                 model: new UserModel()
-            }));
+            });
+            view.on('navigate', this.navigate, this);
+            this.transition(view);
         },
         clientView: function (id) {
             if (_.isNull(this.client) 
@@ -97,9 +98,11 @@ define([
                     router: this
                 });
             } else {
-                this.transition(new UserView({
+                var view = new UserView({
                     model: this.client
-                }));
+                });
+                view.on('navigate', this.navigate, this);
+                this.transition(view);
             }
         },
         clientEditView: function (id) {
@@ -127,7 +130,9 @@ define([
           var goal = new GoalModel({id: id});
           goal.fetch({
             success: function (model, response, options) {
-              options.router.transition(new GoalView({model: model}));
+              var view = new GoalView({model: model});
+              view.on('navigate', options.router.navigate, options.router);
+              options.router.transition(view);
             },
             error: function (model, response, options) {},
             router: this

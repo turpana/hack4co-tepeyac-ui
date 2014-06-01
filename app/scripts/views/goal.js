@@ -38,7 +38,13 @@ define([
         template: JST['app/scripts/templates/goal.ejs'],
         events: {
           'click .send-message': 'sendMessage',
-          'click .post-progress': 'postProgress'
+          'click .post-progress': 'postProgress',
+          'click .navigate': 'clickNavigate'
+        },
+        clickNavigate: function (ev) {
+          var pathname = ev.currentTarget.pathname.replace(/^\//, '');
+          this.trigger('navigate', pathname, {trigger:true});
+          return false;
         },
         sendMessage: function () {
           var timestamp = Math.round(+new Date()/1000);

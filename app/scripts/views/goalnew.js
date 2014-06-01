@@ -87,14 +87,15 @@ define([
           this.model.save({}, {
             success: function (model, response, options) {
               //console.log('success');
-              options.view.model.messages.add(model);
-
+              options.view.hideForm();
+              options.view.trigger('rerender');
             },
             error: function (model, response, options) {
               //console.log('error');
+              options.view.hideForm();
+              options.view.trigger('rerender');
             },
             view: this
-
           });
           return false;
         }
