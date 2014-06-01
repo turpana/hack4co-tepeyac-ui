@@ -8,8 +8,10 @@ define([
     'models/goal',
     'views/main',
     'views/usernew',
-    'views/user'
-], function ($, Backbone, Config, UserModel, GoalModel, MainView, UserNewView, UserView) {
+    'views/user',
+    'views/users'
+], function ($, Backbone, Config, UserModel, GoalModel, MainView, UserNewView,
+  UserView, UsersView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -43,8 +45,14 @@ define([
         },
         routes: {
           '': 'clientNew',
+          'client': 'clientIndex',
           'client/new': 'clientNew',
           'client/:id': 'clientView'
+        },
+        clientIndex: function () {
+          var view = new UsersView();
+          view.on('navigate', this.navigate, this);
+          this.transition(view);
         },
         clientNew: function () {
           this.client = new UserModel();
