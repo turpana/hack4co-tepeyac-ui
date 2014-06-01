@@ -25,6 +25,9 @@ define([
             success: function(model, response, options) {
               options.view.render();
             },
+            error: function(model, response, options) {
+              options.view.render();
+            },
             view: this
           });
         },
@@ -34,6 +37,8 @@ define([
           attributes.clientName = this.client.get('firstName') + ' ' + this.client.get('lastName');
           attributes.clientId = this.client.id;
           this.$el.html(this.template(this.model.attributes));
+          this.events = [];
+          this.model.messages.each(this.addEvent, this);
           this.$el.find('.calendar').fullCalendar({
             events: this.events,
             header: {
@@ -44,12 +49,14 @@ define([
           });
           return this;
         },
-        addMessage: function (model, collection, options) {
+        addEvent: function (model) {
           this.events.push({
             start: Utility.formatDate(this.model.get('created')),
             title: model.responseStatus(),
             color: model.color()
           });
+        },
+        addMessage: function (model, collection, options) {
           this.render();
         }
 
