@@ -1,10 +1,10 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using Newtonsoft.Json;
 
 namespace Clinical.API.Models
 {
     public class Message : SmsMessage
     {
-        //[Required]
         public string GoalId { get; set; }
 
         /// <summary>
@@ -17,6 +17,10 @@ namespace Clinical.API.Models
 
         [BsonIgnoreIfNull]
         public string ReceivedMessage { get; set; }
+
+        [JsonIgnore]
+        [BsonIgnoreIfNull]
+        public string Seed { get; set; }
     }
 
     public class SmsMessage : Entity
