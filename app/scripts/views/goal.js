@@ -9,15 +9,16 @@ define([
     'fullcalendar',
     'bootstrap',
     'models/user',
+    'models/message',
     'views/base',
     'views/messagemodal'
 ], function ($, _, Backbone, JST, Utility, FullCalendar, Bootstrap, UserModel,
-  BaseView, MessageModalView) {
+  MessageModel, BaseView, MessageModalView) {
     'use strict';
 
     var GoalView = BaseView.extend({
         client: null,
-        events: [],
+        calendarEvents: [],
         initialize: function (options) {
           this.model.messages.on('add', this.addMessage, this);
           this.model.messages.fetch();
@@ -35,16 +36,38 @@ define([
           });
         },
         template: JST['app/scripts/templates/goal.ejs'],
+        events: {
+          'click .send-message': 'sendMessage'
+        },
+        sendMessage: function () {
+          var timestamp = Math.round(+new Date()/1000);
+          var message = new MessageModel({
+            toNumber: this.client.get('phone'),
+            body: $('#message-body').val(),
+            goalId: this.model.id,
+            created: timestamp,
+            updated: timestamp
+          });
+          message.save({}, {
+            success: function (model, response, options) {
+              $('#send-reminder').modal('toggle');
+            },
+            error: function (model, response, options) {
+              $('#send-reminder').modal('toggle');
+            }
+          });
+          return false;
+        },
         render: function () {
           var _this = this;
           var attributes = this.model.attributes;
           attributes.clientName = this.client.get('firstName') + ' ' + this.client.get('lastName');
           attributes.clientId = this.client.id;
           this.$el.html(this.template(this.model.attributes));
-          this.events = [];
+          this.calendarEvents = [];
           this.model.messages.each(this.addEvent, this);
           this.$el.find('.calendar').fullCalendar({
-            events: this.events,
+            events: this.calendarEvents,
             header: {
               left: 'today',
               center: 'title',
@@ -63,7 +86,7 @@ define([
           return this;
         },
         addEvent: function (model) {
-          this.events.push({
+          this.calendarEvents.push({
             model: model,
             modelId: model.id,
             start: Utility.formatDate(this.model.get('created')),

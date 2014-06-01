@@ -2,8 +2,9 @@
 
 define([
     'underscore',
-    'backbone'
-], function (_, Backbone) {
+    'backbone',
+    'config',
+], function (_, Backbone, Config) {
     'use strict';
 
     var MessageModel = Backbone.Model.extend({
