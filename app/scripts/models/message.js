@@ -10,6 +10,7 @@ define([
         defaults: {
           fromNumber: '970-744-4304',
           toNumber: '',
+          body: '',
           textMessage: '',
           goalId: '',
           receivedMessage: '',

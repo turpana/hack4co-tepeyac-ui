@@ -7,9 +7,12 @@ define([
     'templates',
     'utility',
     'fullcalendar',
+    'bootstrap',
     'models/user',
-    'views/base'
-], function ($, _, Backbone, JST, Utility, FullCalendar, UserModel, BaseView) {
+    'views/base',
+    'views/messagemodal'
+], function ($, _, Backbone, JST, Utility, FullCalendar, Bootstrap, UserModel,
+  BaseView, MessageModalView) {
     'use strict';
 
     var GoalView = BaseView.extend({
@@ -33,6 +36,7 @@ define([
         },
         template: JST['app/scripts/templates/goal.ejs'],
         render: function () {
+          var _this = this;
           var attributes = this.model.attributes;
           attributes.clientName = this.client.get('firstName') + ' ' + this.client.get('lastName');
           attributes.clientId = this.client.id;
@@ -45,15 +49,27 @@ define([
               left: 'today',
               center: 'title',
               right:  'prev,next'
+            },
+            eventClick: function (calEvent, jsEvent, calView) {
+              if (_.isNull(calEvent.modalView)) {
+                calEvent.modalView = new MessageModalView({
+                  model: calEvent.model
+                });
+                _this.$el.append(calEvent.modalView.render().el);
+              }
+              calEvent.modalView.$el.find('.modal').modal({ show: true });
             }
           });
           return this;
         },
         addEvent: function (model) {
           this.events.push({
+            model: model,
+            modelId: model.id,
             start: Utility.formatDate(this.model.get('created')),
             title: model.responseStatus(),
-            color: model.color()
+            color: model.color(),
+            modalView: null
           });
         },
         addMessage: function (model, collection, options) {
