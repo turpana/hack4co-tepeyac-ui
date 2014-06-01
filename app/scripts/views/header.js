@@ -10,7 +10,15 @@ define([
     'use strict';
 
     var HeaderView = BaseView.extend({
-        template: JST['app/scripts/templates/header.ejs']
+        template: JST['app/scripts/templates/header.ejs'],
+        events: {
+          'click a': 'clickA'
+        },
+        clickA: function (ev) {
+          var pathname = ev.currentTarget.pathname.replace(/^\//, '');
+          this.trigger('navigate', pathname, {trigger:true});
+          return false;
+        }
     });
 
     return HeaderView;

@@ -5,9 +5,10 @@ define([
     'underscore',
     'backbone',
     'templates',
+    'utility',
     'fullcalendar',
     'views/base'
-], function ($, _, Backbone, JST, FullCalendar, BaseView) {
+], function ($, _, Backbone, JST, Utility, FullCalendar, BaseView) {
     'use strict';
 
     var GoalView = BaseView.extend({
@@ -25,15 +26,8 @@ define([
           return this;
         },
         addMessage: function (model, collection, options) {
-          var date = new Date(model.get('created') * 1000);
-          var year = date.getFullYear();
-          var month = new String(1 + date.getMonth());
-          if (1 == month.length) month = "0" + month;
-          var date = new String(date.getDate());
-          if (1 == date.length) date = "0" + date;
-          var fullDate = year+'-'+month+'-'+date;
           this.events.push({
-            start: fullDate,
+            start: Utility.formatDate(this.model.get('created')),
             title: model.responseStatus(),
             color: model.color()
           });

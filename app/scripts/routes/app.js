@@ -25,10 +25,11 @@ define([
           this.headerView = new HeaderView({
             el: $('#header')
           });
+          this.headerView.render().$el.fadeIn(Config.speed);
+          this.headerView.on('navigate', this.navigate, this);
           this.mainView = new MainView({
               el: $('#main')
           });
-          this.headerView.render().$el.fadeIn(Config.speed);
         },
         transition: function (view) {
             view.$el.hide();

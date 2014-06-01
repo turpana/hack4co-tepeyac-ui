@@ -19,6 +19,11 @@ define([
           this.users.fetch();
         },
         template: JST['app/scripts/templates/users.ejs'],
+        render: function () {
+          this.$el.html(this.template());
+          this.users.each(this.appendModel, this);
+          return this;
+        },
         events: {
           'click .add-client': 'addClient'
         },

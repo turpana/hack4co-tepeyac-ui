@@ -26,7 +26,20 @@ define([
           });
         },
         getStatus: function () {
-          return 'green';
+          var rando = Math.floor(Math.random()*2);
+          var goalStatus = '';
+          switch (rando) {
+          case 0:
+            goalStatus = 'ok';
+            break;
+          case 1:
+            goalStatus = 'flag';
+            break;
+          }
+          return goalStatus;
+        },
+        getStatusGlyphIcon: function() {
+          return this.getStatus();
         },
         getDefaultMessages: function () {
           return [
