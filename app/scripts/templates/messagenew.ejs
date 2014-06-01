@@ -1,0 +1,27 @@
+<div class="col-sm-6">
+  <h2>New Message</h2>
+
+  <div class="form-group">
+    <label for="to">To Phone Number</label><br />
+    <input type="text" class="form-control" name="to" required value="<%= to %>"/>
+  </div>
+
+  <div class="form-group">
+    <label for="from">From Phone Number</label><br />
+    <input type="text" class="form-control" name="from" required value="<%= from %>" />
+  </div>
+
+  <div class="form-group">
+    <label for="body">Message</label><br />
+    <input type="text" class="form-control" name="body" required value="<%= body %>" />
+  </div>
+
+  <div class="form-group">
+    <label for="goalId">Goal</label><br />
+    <input type="text" class="form-control" name="goalId" value="<%= goalId %>" />
+  </div>
+
+  <div class="form-group user-new">
+    <input class="btn btn-primary" type="submit" value="SAVE" />
+  </div>
+</div>
