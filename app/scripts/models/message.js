@@ -9,8 +9,8 @@ define([
 
     var MessageModel = Backbone.Model.extend({
         defaults: {
-          fromNumber: '970-744-4304',
-          toNumber: '',
+          from: '970-744-4304',
+          to: '',
           body: '',
           textMessage: '',
           goalId: '',

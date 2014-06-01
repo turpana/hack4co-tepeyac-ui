@@ -42,7 +42,7 @@ define([
         sendMessage: function () {
           var timestamp = Math.round(+new Date()/1000);
           var message = new MessageModel({
-            toNumber: this.client.get('phone'),
+            to: this.client.get('phoneNumber'),
             body: $('#message-body').val(),
             goalId: this.model.id,
             created: timestamp,
@@ -66,6 +66,7 @@ define([
           this.$el.html(this.template(this.model.attributes));
           this.calendarEvents = [];
           this.model.messages.each(this.addEvent, this);
+          console.log(this.calendarEvents);
           this.$el.find('.calendar').fullCalendar({
             events: this.calendarEvents,
             header: {
