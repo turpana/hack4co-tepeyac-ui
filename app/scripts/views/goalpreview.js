@@ -10,6 +10,10 @@ define([
     'use strict';
 
     var GoalPreviewView = BaseView.extend({
+        initialize: function (options) {
+          this.model.messages.on('add', this.render, this);
+          this.model.messages.fetch();
+        },
         className: 'goal-preview',
         events: {
           'click .goal-detail': 'goalDetail'

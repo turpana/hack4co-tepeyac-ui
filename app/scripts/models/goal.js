@@ -26,15 +26,21 @@ define([
           });
         },
         getStatus: function () {
-          var rando = Math.floor(Math.random()*2);
-          var goalStatus = '';
-          switch (rando) {
-          case 0:
-            goalStatus = 'ok';
-            break;
-          case 1:
-            goalStatus = 'flag';
-            break;
+          var goalStatus = 'time';
+          // must have at least 5 reminders to determine goal status
+          if (5 < this.messages.length) {
+            var i = this.messages.length;
+            var numberYes = 0;
+            while (i) {i--;
+              var model = this.messages.at(i);
+              if ('yes' == model.responseStatus()) numberYes++;
+            }
+            if ((numberYes/this.messages.length) > Config.okThreshold) {
+              goalStatus = 'ok';
+            } else {
+              goalStatus = 'flag';
+            }
+            // determine if should return 'flag';
           }
           return goalStatus;
         },
