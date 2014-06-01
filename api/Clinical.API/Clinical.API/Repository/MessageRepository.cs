@@ -2,6 +2,7 @@
 using System.Linq;
 using Clinical.API.Models;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 
 namespace Clinical.API.Repository
 {
@@ -14,7 +15,7 @@ namespace Clinical.API.Repository
 
         public Message GetBySmsId(string smsId)
         {
-            if(string.IsNullOrEmpty(smsId))
+            if (string.IsNullOrEmpty(smsId))
             {
                 return null;
             }
@@ -28,9 +29,29 @@ namespace Clinical.API.Repository
             return base.Collection.Find(query).FirstOrDefault();
         }
 
+        public Message GetMostRecent(string fromPhoneNumber)
+        {
+            var query =
+                Query.Or(
+                    new QueryDocument
+                        {
+                            { "from", fromPhoneNumber}
+                        },
+                    new QueryDocument
+                        {
+                            { "from", "+1" + fromPhoneNumber}
+                        });
+
+            var sortBy = SortBy.Descending("created");
+
+            var mostRecent = this.Collection.Find(query).SetSortOrder(sortBy).FirstOrDefault();
+
+            return mostRecent;
+        }
+
         public IEnumerable<Message> GetMessageByGoalId(string goalId)
         {
-            if(string.IsNullOrEmpty(goalId))
+            if (string.IsNullOrEmpty(goalId))
             {
                 return null;
             }

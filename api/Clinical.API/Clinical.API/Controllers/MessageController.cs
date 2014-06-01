@@ -10,7 +10,7 @@ namespace Clinical.API.Controllers
     public class MessageController : ApiController
     {
         private readonly IMessageService _messageService;
-        private readonly IRepository<Message> _messages; 
+        private readonly IRepository<Message> _messages;
 
         public MessageController(IMessageService messageService, IRepository<Message> messages)
         {
@@ -20,11 +20,16 @@ namespace Clinical.API.Controllers
 
         public HttpResponseMessage Post(Message message)
         {
+            //string callBack = Url.Link("DefaultApi",
+            //    new
+            //        {
+            //            controller= "status",
+            //            goalId = message.GoalId ?? ""
+            //        });
+
             var smsSid = _messageService.SendMessage(message);
 
             var response = Request.CreateResponse(HttpStatusCode.Created, smsSid);
-
-            message.SmsSid = smsSid;
 
             _messages.Add(message);
 
