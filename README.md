@@ -31,3 +31,32 @@ https://github.com/turpana/hack4co-tepeyac-ui/blob/master/api/Clinical.API/Clini
 <add key="SmsAPIKey" value="{smsAPIKey}" />
 
 ```
+
+### Building Front-end
+
+##### Requirements
+
+Front-end SPA app is built with workflow and generated with the backbone generator (using bootstrap + requirejs). So to build and develop, the following are **required**:
+
+* <http://nodejs.org/>
+* <http://yeoman.io/> 
+* <http://compass-style.org/install/>
+
+The yo generator is not required, but helpful:
+* <https://github.com/yeoman/generator-backbone>
+
+
+##### Building
+
+The front-end code needs to be built, before publishing. Once the tools above are isntalled, run in the command line, from the root directory of the repository:
+
+```
+grunt build
+```
+
+##### Developing
+To run the node server and live reload while developing:
+
+```
+grunt server
+```
