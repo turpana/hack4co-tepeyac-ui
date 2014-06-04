@@ -42,8 +42,16 @@ Front-end SPA app is built with yeoman workflow and backbone generator (using bo
 * <http://yeoman.io/> 
 * <http://compass-style.org/install/>
 
+Once the required tools are installed, download/install vendor plugins. Run the following commands from the root directory of the repository:
+
+```
+npm install
+bower install
+```
+
 The yo generator is not required, but helpful for development:
 * <https://github.com/yeoman/generator-backbone>
+
 
 
 ##### Building
