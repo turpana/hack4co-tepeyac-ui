@@ -1,5 +1,5 @@
-<h2>
-  <% if (firstName || lastName) { %>
+<p><span class="label label-default pull-right"><a class="navigate" href="/client/<%= id %>/edit">Editar</a></span></p>
+<h2><% if (firstName || lastName) { %>
     Cliente: 
       <% if (firstName) { %>
         <%= firstName %> 
@@ -9,8 +9,7 @@
       <% } %>
   <% } else { %>
     ID de Cliente: <%= id %>
-  <% } %>
-</h2>
+  <% } %></h2>
 <% if (createdFormated) { %>
   <p class="text-muted">Fecha de entrada: <%= createdFormated %></p>
 <% } %>
