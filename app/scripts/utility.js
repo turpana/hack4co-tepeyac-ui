@@ -8,7 +8,7 @@ define({
       formatted = created.substring(0, 10);
       formatted = formatted.replace(/\//g, "-");
     } else {
-      // assuming unix timestampe
+      // assuming unix timestamp
       var date = new Date(created * 1000);
       var year = date.getFullYear();
       var month = new String(1 + date.getMonth());

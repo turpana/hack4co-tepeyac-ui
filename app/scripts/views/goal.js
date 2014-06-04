@@ -118,14 +118,16 @@ define([
           return this;
         },
         addEvent: function (model) {
-          this.calendarEvents.push({
+          var calendarEvent = {
             model: model,
             modelId: model.id,
-            start: Utility.formatDate(this.model.get('created')),
+            start: Utility.formatDate(model.get('created')),
             title: model.responseStatus(),
             color: model.color(),
             modalView: null
-          });
+          };
+          console.log(calendarEvent.start);
+          this.calendarEvents.push(calendarEvent);
         },
         addMessage: function (model, collection, options) {
           this.render();
