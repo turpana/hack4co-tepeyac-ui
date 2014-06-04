@@ -9,11 +9,12 @@ define([
     'views/header',
     'views/main',
     'views/usernew',
+    'views/useredit',
     'views/user',
     'views/users',
     'views/goal'
 ], function ($, Backbone, Config, UserModel, GoalModel, HeaderView, MainView, UserNewView,
-  UserView, UsersView, GoalView) {
+  UserEditNew, UserView, UsersView, GoalView) {
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -111,14 +112,14 @@ define([
             });
             this.client.fetch({
                 success: function (model, response, options) {
-                    options.router.transition(new UserNewView({
+                    options.router.transition(new UserEditNew({
                         model: model
                     }));
                 },
                 error: function (model, response, options) {
                     //console.log('error', model);
                     if (Config.debug) {
-                        options.router.transition(new UserNewView({
+                        options.router.transition(new UserEditNew({
                             model: model
                         }));
                     }
