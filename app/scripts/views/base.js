@@ -12,6 +12,14 @@ define([
         template: JST['app/scripts/templates/base.ejs'],
 
         // helper so router can listen to views 'navigate' events
+        events: {
+          'click .navigate': 'clickNavigate'
+        },
+        clickNavigate: function (ev) {
+          var pathname = ev.currentTarget.pathname.replace(/^\//, '');
+          this.trigger('navigate', pathname, {trigger:true});
+          return false;
+        },
         navigate: function (path, options) {
           this.trigger('navigate', path, options); 
         },
