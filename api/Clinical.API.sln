@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinical.API", "Clinical.API\Clinical.API.csproj", "{B2D55052-26AE-49E4-8F7E-01A260A90DD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinical.API", "Clinical.API\Clinical.API\Clinical.API.csproj", "{B2D55052-26AE-49E4-8F7E-01A260A90DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica.UI", "Clinica.UI\Clinica.UI.csproj", "{88469A81-94E9-48A6-A63D-BC0BDC0B9E9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +15,10 @@ Global
 		{B2D55052-26AE-49E4-8F7E-01A260A90DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2D55052-26AE-49E4-8F7E-01A260A90DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2D55052-26AE-49E4-8F7E-01A260A90DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88469A81-94E9-48A6-A63D-BC0BDC0B9E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88469A81-94E9-48A6-A63D-BC0BDC0B9E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88469A81-94E9-48A6-A63D-BC0BDC0B9E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88469A81-94E9-48A6-A63D-BC0BDC0B9E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
