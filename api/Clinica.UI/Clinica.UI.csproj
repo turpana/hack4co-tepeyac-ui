@@ -47,149 +47,48 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="..\..\app\.htaccess">
-      <Link>.htaccess</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\collections\goal.js">
-      <Link>scripts\collections\goal.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\collections\message.js">
-      <Link>scripts\collections\message.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\collections\user.js">
-      <Link>scripts\collections\user.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\config.js">
-      <Link>scripts\config.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\main.js">
-      <Link>scripts\main.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\models\category.js">
-      <Link>scripts\models\category.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\models\goal.js">
-      <Link>scripts\models\goal.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\models\message.js">
-      <Link>scripts\models\message.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\models\user.js">
-      <Link>scripts\models\user.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\utility.js">
-      <Link>scripts\utility.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\vendor\bootstrap.js">
-      <Link>scripts\vendor\bootstrap.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\base.js">
-      <Link>scripts\views\base.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\goal.js">
-      <Link>scripts\views\goal.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\goalnew.js">
-      <Link>scripts\views\goalnew.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\goalpreview.js">
-      <Link>scripts\views\goalpreview.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\header.js">
-      <Link>scripts\views\header.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\home.js">
-      <Link>scripts\views\home.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\login.js">
-      <Link>scripts\views\login.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\main.js">
-      <Link>scripts\views\main.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\messagemodal.js">
-      <Link>scripts\views\messagemodal.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\messagenew.js">
-      <Link>scripts\views\messagenew.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\user.js">
-      <Link>scripts\views\user.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\usernew.js">
-      <Link>scripts\views\usernew.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\userpreviewrow.js">
-      <Link>scripts\views\userpreviewrow.js</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\views\users.js">
-      <Link>scripts\views\users.js</Link>
-    </Content>
-    <Content Include="..\..\app\styles\main.css">
-      <Link>styles\main.css</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\app\404.html">
+    <Content Include="..\..\dist\404.html">
       <Link>404.html</Link>
     </Content>
-    <Content Include="..\..\app\favicon.ico">
+    <Content Include="..\..\dist\bower_components\requirejs\require.js">
+      <Link>bower_components\requirejs\require.js</Link>
+    </Content>
+    <Content Include="..\..\dist\bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.svg">
+      <Link>bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.svg</Link>
+    </Content>
+    <Content Include="..\..\dist\favicon.ico">
       <Link>favicon.ico</Link>
     </Content>
-    <Content Include="..\..\app\index.html">
+    <Content Include="..\..\dist\index.html">
       <Link>index.html</Link>
     </Content>
-    <Content Include="..\..\app\robots.txt">
+    <Content Include="..\..\dist\robots.txt">
       <Link>robots.txt</Link>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\app\scripts\templates\base.ejs">
-      <Link>scripts\templates\base.ejs</Link>
+    <Content Include="..\..\dist\scripts\1b82c464.main.js">
+      <Link>scripts\1b82c464.main.js</Link>
     </Content>
-    <Content Include="..\..\app\scripts\templates\goal.ejs">
-      <Link>scripts\templates\goal.ejs</Link>
+    <Content Include="..\..\dist\scripts\vendor\d7100892.modernizr.js">
+      <Link>scripts\vendor\d7100892.modernizr.js</Link>
     </Content>
-    <Content Include="..\..\app\scripts\templates\goalnew.ejs">
-      <Link>scripts\templates\goalnew.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\goalpreview.ejs">
-      <Link>scripts\templates\goalpreview.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\header.ejs">
-      <Link>scripts\templates\header.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\home.ejs">
-      <Link>scripts\templates\home.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\login.ejs">
-      <Link>scripts\templates\login.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\main.ejs">
-      <Link>scripts\templates\main.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\messagemodal.ejs">
-      <Link>scripts\templates\messagemodal.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\messagenew.ejs">
-      <Link>scripts\templates\messagenew.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\user.ejs">
-      <Link>scripts\templates\user.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\usernew.ejs">
-      <Link>scripts\templates\usernew.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\userpreviewrow.ejs">
-      <Link>scripts\templates\userpreviewrow.ejs</Link>
-    </Content>
-    <Content Include="..\..\app\scripts\templates\users.ejs">
-      <Link>scripts\templates\users.ejs</Link>
+    <Content Include="..\..\dist\styles\f1edf455.main.css">
+      <Link>styles\f1edf455.main.css</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\app\styles\main.scss">
-      <Link>styles\main.scss</Link>
+    <Content Include="..\..\dist\bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.eot">
+      <Link>bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.eot</Link>
+    </Content>
+    <Content Include="..\..\dist\bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.ttf">
+      <Link>bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.ttf</Link>
+    </Content>
+    <Content Include="..\..\dist\bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <Link>bower_components\sass-bootstrap\fonts\glyphicons-halflings-regular.woff</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\dist\.htaccess">
+      <Link>.htaccess</Link>
     </Content>
   </ItemGroup>
   <PropertyGroup>
