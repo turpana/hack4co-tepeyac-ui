@@ -45,9 +45,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="..\..\app\.htaccess">
       <Link>.htaccess</Link>
@@ -127,6 +125,9 @@
     <Content Include="..\..\app\scripts\views\users.js">
       <Link>scripts\views\users.js</Link>
     </Content>
+    <Content Include="..\..\app\styles\main.css">
+      <Link>styles\main.css</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\app\404.html">
@@ -184,6 +185,11 @@
     </Content>
     <Content Include="..\..\app\scripts\templates\users.ejs">
       <Link>scripts\templates\users.ejs</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\app\styles\main.scss">
+      <Link>styles\main.scss</Link>
     </Content>
   </ItemGroup>
   <PropertyGroup>
